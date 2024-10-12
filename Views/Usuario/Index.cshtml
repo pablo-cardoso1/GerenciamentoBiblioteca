@@ -1,0 +1,60 @@
+@model IEnumerable<GerenciamentoBiblioteca.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Listagem de Usuarios";
+}
+
+<h2>Usuarios</h2>
+
+<p>
+    <a asp-action="Adicionar">Novo Usuario</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>                
+                
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |
+                    <a asp-action="Remover" asp-route-id="@item.Id">Remover</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>

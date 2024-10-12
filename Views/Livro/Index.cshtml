@@ -1,0 +1,66 @@
+@model IEnumerable<GerenciamentoBiblioteca.Models.Livro>
+
+@{
+    ViewData["Title"] = "Listagem de Livros";
+}
+
+<h2>Livros</h2>
+
+<p>
+    <a asp-action="Adicionar">Novo Livro</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnoPublicacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Autor)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnoPublicacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade)
+                </td>
+                
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |
+                    <a asp-action="Remover" asp-route-id="@item.Id">Remover</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,40 @@
+@model IEnumerable<GerenciamentoBiblioteca.Models.Emprestimo>
+
+@{
+    ViewData["Title"] = "Lista de Empréstimos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Livro</th>
+            <th>Usuário</th>
+            <th>Data do Empréstimo</th>
+            <th>Data da Devolução</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emprestimo in Model)
+        {
+            <tr>
+                <td>@emprestimo.IdLivro</td>
+                <td>@emprestimo.IdUsuario</td>
+                <td>@emprestimo.DataEmprestimo.ToString("dd/MM/yyyy")</td>
+                <td>@emprestimo.DataDevolucao?.ToString("dd/MM/yyyy")</td>
+                <td>
+                    @if (emprestimo.DataDevolucao == null)
+                    {
+                        <form asp-action="Devolver" asp-route-id="@emprestimo.Id" method="post">
+                            <button type="submit" class="btn btn-primary">Devolver</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-controller="Emprestimo" asp-action="Emprestar">Emprestar Livro</a>

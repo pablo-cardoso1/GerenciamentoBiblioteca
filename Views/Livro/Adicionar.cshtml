@@ -1,0 +1,40 @@
+@model GerenciamentoBiblioteca.Models.Livro
+
+@{
+    ViewData["Title"] = "Adicionar novo Livro";
+}
+
+<h1>Adicionar novo Livro</h1>
+
+<hr>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Adicionar">
+            <div clas="form-group">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+            </div>
+            <div clas="form-group">
+                <label asp-for="Autor" class="control-label"></label>
+                <input asp-for="Autor" class="form-control" />
+            </div>
+            <div clas="form-group">
+                <label asp-for="AnoPublicacao" class="control-label"></label>
+                <input asp-for="AnoPublicacao" class="form-control" />
+            </div>
+            <div clas="form-group">
+                <label asp-for="Quantidade" class="control-label"></label>
+                <input asp-for="Quantidade" class="form-control"/>
+                
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Adicionar" class="btn btn-primary" />               
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>

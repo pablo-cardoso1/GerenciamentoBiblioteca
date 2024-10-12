@@ -1,0 +1,38 @@
+@model GerenciamentoBiblioteca.Models.Livro;
+
+@{
+    ViewData["Title"] = "Detalhes do livro";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.Titulo)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Titulo)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.Autor)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Autor)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.AnoPublicacao)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.AnoPublicacao)
+        </dt>
+         <dt class="col-sm-2">
+            @Html.DisplayNameFor(x => x.Quantidade)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(x => x.Quantidade)
+        </dt>
+    </dl>
+</div>
+<a asp-action="Editar" asp-route-id="@Model.Id">Editar</a>
+<a asp-action="Index">Voltar</a>

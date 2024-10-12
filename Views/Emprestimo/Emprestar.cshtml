@@ -1,0 +1,28 @@
+@model GerenciamentoBiblioteca.Models.Emprestimo
+
+<h1>Emprestar Livro</h1>
+
+<form asp-action="Emprestar" method="post">
+    <div class="form-group">
+        <label for="IdUsuario">Usuário</label>
+        <select asp-for="IdUsuario" class="form-control" asp-items="@(new SelectList(ViewBag.Usuarios, "Id", "Nome"))">
+            <option value="">Selecione um usuário</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="IdLivro">Livro</label>
+        <select asp-for="IdLivro" class="form-control" asp-items="@(new SelectList(ViewBag.Livros, "Id", "Titulo"))">
+            <option value="">Selecione um livro</option>
+        </select>
+    </div>
+
+    <br>
+
+    <button type="submit" class="btn btn-primary">Emprestar</button>
+</form>
+
+<br>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
