@@ -17,4 +17,4 @@ Este é um sistema de gerenciamento de biblioteca desenvolvido em C# utilizando 
 ## Instalação
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/pablo-cardoso1/gerenciamentobiblioteca
+   git clone https://github.com/pablo-cardoso1/GerenciamentoBiblioteca.git
