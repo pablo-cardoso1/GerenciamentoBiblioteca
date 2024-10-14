@@ -40,7 +40,9 @@ Este é um **sistema de gerenciamento de biblioteca** robusto e eficiente, desen
 5. Acesse o sistema através do navegador: https://localhost:5001
 
 Contribuição 🤝
+
 Contribuições são bem-vindas! Sinta-se à vontade para enviar um pull request ou abrir uma issue para discutir melhorias.
 
 Licença
+
 Este projeto está licenciado sob a MIT License. 
