@@ -25,23 +25,22 @@ Este é um **sistema de gerenciamento de biblioteca** robusto e eficiente, desen
    ```bash
    git clone https://github.com/pablo-cardoso1/GerenciamentoBiblioteca.git
 
-Navegue até o diretório do projeto:
+2. Navegue até o diretório do projeto:
 
 ```bash
-Copy code
 cd GerenciamentoBiblioteca
 
-Restaure as dependências:
+3. Restaure as dependências:
 
 ```bash
-Copy code
 dotnet restore
-Execute o aplicativo:
+
+4. Execute o aplicativo:
 
 ```bash
-Copy code
 dotnet run
-Acesse o sistema através do navegador: https://localhost:5001
+
+5. Acesse o sistema através do navegador: https://localhost:5001
 
 Contribuição 🤝
 Contribuições são bem-vindas! Sinta-se à vontade para enviar um pull request ou abrir uma issue para discutir melhorias.
