@@ -20,3 +20,69 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Ajustes de background e fontes */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilizando a navbar */
+.navbar {
+    background-color: #004080;
+}
+
+.navbar-brand, .nav-link {
+    color: rgb(2, 22, 133) !important;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Personalização dos botões */
+.btn-primary {
+    background-color: #004080;
+    border-color: #004080;
+}
+
+.btn-primary:hover {
+    background-color: #003366;
+    border-color: #003366;
+}
+
+/* Ajustes no rodapé */
+.footer {
+    padding: 20px 0;
+    background-color: #004080;
+    color: white;
+    text-align: center;
+}
+
+/* Ajustes de margens e espaçamento */
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pb-3 {
+    padding-bottom: 30px;
+}
+
+/* Cores dos títulos */
+h1, h2, h3 {
+    color: #004080;
+    text-align: center;
+}
+
+/* Estilo para tabelas */
+table {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #004080;
+    color: white;
+}

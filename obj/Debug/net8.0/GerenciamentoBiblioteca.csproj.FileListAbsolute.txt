@@ -166,3 +166,4 @@ C:\Projetos\GerenciamentoBiblioteca\obj\Debug\net8.0\refint\GerenciamentoBibliot
 C:\Projetos\GerenciamentoBiblioteca\obj\Debug\net8.0\GerenciamentoBiblioteca.pdb
 C:\Projetos\GerenciamentoBiblioteca\obj\Debug\net8.0\GerenciamentoBiblioteca.genruntimeconfig.cache
 C:\Projetos\GerenciamentoBiblioteca\obj\Debug\net8.0\ref\GerenciamentoBiblioteca.dll
+C:\Projetos\GerenciamentoBiblioteca\obj\Debug\net8.0\GerenciamentoBiblioteca.sourcelink.json

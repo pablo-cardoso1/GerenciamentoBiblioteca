@@ -4,10 +4,10 @@
     ViewData["Title"] = "Listagem de Usuarios";
 }
 
-<h2>Usuarios</h2>
+<h2>Usuários</h2>
 
 <p>
-    <a asp-action="Adicionar">Novo Usuario</a>
+    <a asp-action="Adicionar" class="btn btn-primary">Novo Usuário</a>
 </p>
 
 <table class="table">
@@ -24,7 +24,10 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Telefone)
-            </th>           
+            </th>    
+             <th>
+                Opções
+            </th>                 
         </tr>
     </thead>
     <tbody>
@@ -48,9 +51,9 @@
                 </td>                
                 
                 <td>
-                    <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Detalhes" asp-route-id="@item.Id">Detalhes</a> |
-                    <a asp-action="Remover" asp-route-id="@item.Id">Remover</a>
+                    <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-primary">Editar</a> 
+                    <a asp-action="Detalhes" asp-route-id="@item.Id" class="btn btn-primary">Detalhes</a> 
+                    <a asp-action="Remover" asp-route-id="@item.Id" class="btn btn-primary">Remover</a>
                 </td>
 
             </tr>

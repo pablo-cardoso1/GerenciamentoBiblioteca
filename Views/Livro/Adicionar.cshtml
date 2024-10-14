@@ -4,7 +4,7 @@
     ViewData["Title"] = "Adicionar novo Livro";
 }
 
-<h1>Adicionar novo Livro</h1>
+<h1 >Adicionar novo Livro</h1>
 
 <hr>
 <div class="row">
@@ -19,7 +19,7 @@
                 <input asp-for="Autor" class="form-control" />
             </div>
             <div clas="form-group">
-                <label asp-for="AnoPublicacao" class="control-label"></label>
+                <label asp-for="AnoPublicacao" class="control-label">Ano de Publicação</label>
                 <input asp-for="AnoPublicacao" class="form-control" />
             </div>
             <div clas="form-group">
@@ -36,5 +36,5 @@
 </div>
 <br>
 <div>
-    <a asp-action="Index">Voltar</a>
+    <a asp-action="Index" class="btn btn-primary">Voltar</a>
 </div>
