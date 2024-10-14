@@ -10,6 +10,14 @@
     <a asp-action="Adicionar" class="btn btn-primary">Novo Livro</a>
 </p>
 
+<!-- Campo de busca -->
+<form asp-action="Index" method="get">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="searchString" placeholder="Buscar livro pelo título..." aria-label="Buscar livro pelo título">
+        <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>

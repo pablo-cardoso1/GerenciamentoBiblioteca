@@ -7,8 +7,9 @@ using GerenciamentoBiblioteca.Context;
 using GerenciamentoBiblioteca.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GerenciamentoBiblioteca.Controllers{
-    
+namespace GerenciamentoBiblioteca.Controllers
+{
+
     public class LivroController : Controller
     {
         private readonly BibliotecaContext _context;
@@ -16,13 +17,20 @@ namespace GerenciamentoBiblioteca.Controllers{
         public LivroController(BibliotecaContext context)
         {
             _context = context;
-        }   
-        
+        }
 
-        public IActionResult Index()
+
+        public IActionResult Index(string searchString)
         {
-            var livros = _context.Livros.ToList();
-            return View(livros);
+            var livros = from l in _context.Livros
+                         select l;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                livros = livros.Where(l => l.Titulo.Contains(searchString) || l.Autor.Contains(searchString));
+            }
+
+            return View(livros.ToList());
         }
 
         public IActionResult Adicionar()
@@ -47,9 +55,9 @@ namespace GerenciamentoBiblioteca.Controllers{
         {
             var livro = _context.Livros.Find(id);
 
-            if(livro == null)
+            if (livro == null)
                 return NotFound();
-            
+
             return View(livro);
         }
 
@@ -74,7 +82,7 @@ namespace GerenciamentoBiblioteca.Controllers{
             var livro = _context.Livros.Find(id);
             if (livro == null)
                 return RedirectToAction(nameof(Index));
-            
+
             return View(livro);
         }
 
