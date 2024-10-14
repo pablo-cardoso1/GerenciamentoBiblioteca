@@ -27,17 +27,18 @@ Este é um **sistema de gerenciamento de biblioteca** robusto e eficiente, desen
 
 Navegue até o diretório do projeto:
 
-bash
+```bash
 Copy code
 cd GerenciamentoBiblioteca
+
 Restaure as dependências:
 
-bash
+```bash
 Copy code
 dotnet restore
 Execute o aplicativo:
 
-bash
+```bash
 Copy code
 dotnet run
 Acesse o sistema através do navegador: https://localhost:5001
