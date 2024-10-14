@@ -3,11 +3,15 @@ using GerenciamentoBiblioteca.Context;
 
 
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<BibliotecaContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
 builder.Services.AddControllersWithViews();
+// Adiciona o serviço de notificação ao contêiner de DI
+
 
 var app = builder.Build();
 

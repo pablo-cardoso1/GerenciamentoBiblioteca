@@ -10,68 +10,48 @@
     <a asp-action="Adicionar" class="btn btn-primary">Novo Livro</a>
 </p>
 
-<!-- Campo de busca -->
+<!-- Campos de busca -->
 <form asp-action="Index" method="get">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" name="searchString" placeholder="Buscar livro pelo título..." aria-label="Buscar livro pelo título">
-        <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="searchTitulo" placeholder="Buscar por título..." value="@ViewContext.HttpContext.Request.Query["searchTitulo"]">
+        </div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="searchAutor" placeholder="Buscar por autor..." value="@ViewContext.HttpContext.Request.Query["searchAutor"]">
+        </div>
+        <div class="col-md-4">
+            <input type="number" class="form-control" name="searchAno" placeholder="Buscar por ano..." value="@ViewContext.HttpContext.Request.Query["searchAno"]">
+        </div>
     </div>
+    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
 </form>
 
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Titulo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Autor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnoPublicacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantidade)
-            </th>
-            <th>
-                Opções
-            </th>            
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Titulo)</th>
+            <th>@Html.DisplayNameFor(model => model.Autor)</th>
+            <th>@Html.DisplayNameFor(model => model.AnoPublicacao)</th>
+            <th>@Html.DisplayNameFor(model => model.Quantidade)</th>
+            <th>Opções</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Titulo)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Autor)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.AnoPublicacao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantidade)
-                </td>
-                
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Titulo)</td>
+                <td>@Html.DisplayFor(modelItem => item.Autor)</td>
+                <td>@Html.DisplayFor(modelItem => item.AnoPublicacao)</td>
+                <td>@Html.DisplayFor(modelItem => item.Quantidade)</td>
                 <td>
                     <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-primary">Editar</a> 
                     <a asp-action="Detalhes" asp-route-id="@item.Id" class="btn btn-primary">Detalhes</a> 
                     <a asp-action="Remover" asp-route-id="@item.Id" class="btn btn-primary">Remover</a>
                 </td>
-
             </tr>
         }
     </tbody>
-
 </table>

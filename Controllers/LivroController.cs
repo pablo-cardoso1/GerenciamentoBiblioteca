@@ -20,18 +20,29 @@ namespace GerenciamentoBiblioteca.Controllers
         }
 
 
-        public IActionResult Index(string searchString)
+        public IActionResult Index(string searchTitulo, string searchAutor, int? searchAno)
         {
-            var livros = from l in _context.Livros
-                         select l;
+            var livros = _context.Livros.AsQueryable();
 
-            if (!String.IsNullOrEmpty(searchString))
+            // Filtros de busca
+            if (!string.IsNullOrEmpty(searchTitulo))
             {
-                livros = livros.Where(l => l.Titulo.Contains(searchString) || l.Autor.Contains(searchString));
+                livros = livros.Where(l => l.Titulo.Contains(searchTitulo));
+            }
+
+            if (!string.IsNullOrEmpty(searchAutor))
+            {
+                livros = livros.Where(l => l.Autor.Contains(searchAutor));
+            }
+
+            if (searchAno.HasValue)
+            {
+                livros = livros.Where(l => l.AnoPublicacao == searchAno);
             }
 
             return View(livros.ToList());
         }
+
 
         public IActionResult Adicionar()
         {

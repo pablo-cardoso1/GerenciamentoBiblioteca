@@ -11,7 +11,7 @@ namespace GerenciamentoBiblioteca.Models
         public int IdLivro { get; set; }
         public int IdUsuario { get; set; }
         public DateTime DataEmprestimo { get; set; }
-        public DateTime? DataDevolucao { get; set; }
+        public DateTime? DataDevolucao { get; set; }        
 
         
     }
