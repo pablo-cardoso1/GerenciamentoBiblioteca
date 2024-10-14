@@ -16,38 +16,43 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
+                @if (User.IsInRole("Admin"))
+            {
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Biblioteca</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+            }
+                else
+            {                          
+                    
+                    
+                    
+            }
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <ul class="nav">
-                            <ul class="nav">
-                                <li class="nav-item">
-                                    <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
-                                        href="/">Início</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Livro" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
-                                        href="/Livro/Index">Livros</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Usuario" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
-                                        href="/Usuario/Index">Usuários</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Emprestimo" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
-                                        href="/Emprestimo/Index">Empréstimos</a>
-                                </li>
-                            </ul>
-
-                        </ul>
-
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Livro" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
+                                href="/Livro/Index">Livros</a>
                         </li>
-
+                        @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Usuario" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
+                                href="/Usuario/Index">Usuários</a>
+                        </li>
+                    }
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Emprestimo" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")"
+                                href="/Emprestimo/Index">Empréstimos</a>
+                        </li>
                     </ul>
+
+                    <!-- Formulário para Logout -->
+                    <form asp-controller="Auth" asp-action="Logout" method="post" class="ml-auto">
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
                 </div>
             </div>
         </nav>
@@ -60,8 +65,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - Biblioteca - <a asp-area="" asp-controller="Home"
-                asp-action="Privacy">Privacidade</a>
+            &copy; 2024 - Biblioteca - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidade</a>
         </div>
     </footer>
 

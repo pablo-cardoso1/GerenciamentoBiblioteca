@@ -11,15 +11,21 @@
     </div>
     
     <div class="form-group">
-        <label for="IdLivro">Livro</label>
-        <select asp-for="IdLivro" class="form-control" asp-items="@(new SelectList(ViewBag.Livros, "Id", "Titulo"))">
+        <label for="LivroId">Livro</label>
+        <select asp-for="LivroId" class="form-control" asp-items="@(new SelectList(ViewBag.Livros, "Id", "Titulo"))">
             <option value="">Selecione um livro</option>
         </select>
     </div>
 
     <br>
-
-    <button type="submit" class="btn btn-primary">Emprestar</button>
+    @if (User.IsInRole("Admin"))
+    {
+        <button type="submit" class="btn btn-primary">Emprestar</button>
+    }
+    else
+    {
+        <button type="submit" class="btn btn-primary">Pegar Livro Emprestado</button>
+    }
 </form>
 
 <br>

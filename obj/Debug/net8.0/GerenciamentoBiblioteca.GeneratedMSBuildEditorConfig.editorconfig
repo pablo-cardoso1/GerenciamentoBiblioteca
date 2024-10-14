@@ -26,6 +26,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Projetos\GerenciamentoBiblioteca
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Projetos/GerenciamentoBiblioteca/Views/Auth/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/GerenciamentoBiblioteca/Views/Auth/Cadastro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxDYWRhc3Ryby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/GerenciamentoBiblioteca/Views/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projetos/GerenciamentoBiblioteca/Views/Emprestimo/Emprestar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wcmVzdGltb1xFbXByZXN0YXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

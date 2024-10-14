@@ -21,7 +21,7 @@
         @foreach (var emprestimo in Model)
         {
             <tr>
-                <td>@emprestimo.IdLivro</td>
+                <td>@emprestimo.LivroId</td>
                 <td>@emprestimo.IdUsuario</td>
                 <td>@emprestimo.DataEmprestimo.ToString("dd/MM/yyyy")</td>
                 <td>@emprestimo.DataDevolucao?.ToString("dd/MM/yyyy")</td>
@@ -37,5 +37,11 @@
         }
     </tbody>
 </table>
-
-<a class="btn btn-primary" asp-controller="Emprestimo" asp-action="Emprestar">Emprestar Livro</a>
+@if (User.IsInRole("Admin"))
+{
+    <a class="btn btn-primary" asp-controller="Emprestimo" asp-action="Emprestar">Emprestar Livro</a>
+}
+else
+{
+    <a class="btn btn-primary" asp-controller="Emprestimo" asp-action="Emprestar">Pegar Livro Emprestado</a>
+}

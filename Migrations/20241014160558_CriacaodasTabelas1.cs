@@ -5,33 +5,33 @@
 namespace GerenciamentoBiblioteca.Migrations
 {
     /// <inheritdoc />
-    public partial class AttClasses : Migration
+    public partial class CriacaodasTabelas1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "ISBN",
-                table: "Livros");
+                name: "Senha",
+                table: "Usuarios");
 
-            migrationBuilder.AddColumn<int>(
-                name: "Quantidade",
-                table: "Livros",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.DropColumn(
+                name: "Tipo",
+                table: "Usuarios");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Quantidade",
-                table: "Livros");
+            migrationBuilder.AddColumn<string>(
+                name: "Senha",
+                table: "Usuarios",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
 
             migrationBuilder.AddColumn<string>(
-                name: "ISBN",
-                table: "Livros",
+                name: "Tipo",
+                table: "Usuarios",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");

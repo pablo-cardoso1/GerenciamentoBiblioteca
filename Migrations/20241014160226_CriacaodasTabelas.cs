@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GerenciamentoBiblioteca.Migrations
 {
     /// <inheritdoc />
-    public partial class AdicionaTabelaGerenciamentoBiblioteca : Migration
+    public partial class CriacaodasTabelas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,10 +17,10 @@ namespace GerenciamentoBiblioteca.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdLivro = table.Column<int>(type: "int", nullable: false),
+                    LivroId = table.Column<int>(type: "int", nullable: false),
                     IdUsuario = table.Column<int>(type: "int", nullable: false),
                     DataEmprestimo = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DataDevolucao = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DataDevolucao = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -36,7 +36,7 @@ namespace GerenciamentoBiblioteca.Migrations
                     Titulo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Autor = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AnoPublicacao = table.Column<int>(type: "int", nullable: false),
-                    ISBN = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Quantidade = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,7 +51,9 @@ namespace GerenciamentoBiblioteca.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefone = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Telefone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tipo = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

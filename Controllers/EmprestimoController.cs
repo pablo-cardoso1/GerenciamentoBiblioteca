@@ -3,9 +3,11 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using GerenciamentoBiblioteca.Context;
 using GerenciamentoBiblioteca.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GerenciamentoBiblioteca.Controllers
 {
+    [Authorize]
     public class EmprestimoController : Controller
     {
         private readonly BibliotecaContext _context;
@@ -35,7 +37,7 @@ namespace GerenciamentoBiblioteca.Controllers
         {
             if (ModelState.IsValid)
             {
-                var livro = _context.Livros.Find(emprestimo.IdLivro);
+                var livro = _context.Livros.Find(emprestimo.LivroId);
 
                 if (livro != null && livro.Quantidade > 0)
                 {
@@ -57,6 +59,7 @@ namespace GerenciamentoBiblioteca.Controllers
             return View(emprestimo);
         }
 
+        
         [HttpPost]
         public IActionResult Devolver(int id)
         {
@@ -68,7 +71,7 @@ namespace GerenciamentoBiblioteca.Controllers
 
             emprestimo.DataDevolucao = DateTime.Now;            
 
-            var livro = _context.Livros.Find(emprestimo.IdLivro);
+            var livro = _context.Livros.Find(emprestimo.LivroId);
             if (livro != null)
             {
                 livro.Quantidade++;

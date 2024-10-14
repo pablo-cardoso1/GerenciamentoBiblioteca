@@ -1,0 +1,47 @@
+@model LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<!-- Exibe mensagens de erro de validação, se existirem -->
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+
+<form asp-action="Login" method="post">
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Senha">Senha</label>
+        <input asp-for="Senha" type="password" class="form-control" />
+        <span asp-validation-for="Senha" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Entrar</button>
+    </div>
+</form>
+
+<!-- Botão de Cadastrar -->
+<div>
+    <a asp-controller="Auth" asp-action="Cadastro">Cadastrar</a>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

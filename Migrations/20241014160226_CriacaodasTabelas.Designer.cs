@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciamentoBiblioteca.Migrations
 {
     [DbContext(typeof(BibliotecaContext))]
-    [Migration("20241012215335_AddPropEmprestimo")]
-    partial class AddPropEmprestimo
+    [Migration("20241014160226_CriacaodasTabelas")]
+    partial class CriacaodasTabelas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,23 +39,13 @@ namespace GerenciamentoBiblioteca.Migrations
                     b.Property<DateTime>("DataEmprestimo")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdLivro")
-                        .HasColumnType("int");
-
                     b.Property<int>("IdUsuario")
                         .HasColumnType("int");
 
                     b.Property<int>("LivroId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("LivroId");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Emprestimos");
                 });
@@ -103,32 +93,21 @@ namespace GerenciamentoBiblioteca.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tipo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
-                });
-
-            modelBuilder.Entity("GerenciamentoBiblioteca.Models.Emprestimo", b =>
-                {
-                    b.HasOne("GerenciamentoBiblioteca.Models.Livro", "Livro")
-                        .WithMany()
-                        .HasForeignKey("LivroId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GerenciamentoBiblioteca.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Livro");
-
-                    b.Navigation("Usuario");
                 });
 #pragma warning restore 612, 618
         }

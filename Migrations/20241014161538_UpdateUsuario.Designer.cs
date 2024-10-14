@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciamentoBiblioteca.Migrations
 {
     [DbContext(typeof(BibliotecaContext))]
-    [Migration("20241012214612_UpdateEmprestimo")]
-    partial class UpdateEmprestimo
+    [Migration("20241014161538_UpdateUsuario")]
+    partial class UpdateUsuario
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,10 +39,10 @@ namespace GerenciamentoBiblioteca.Migrations
                     b.Property<DateTime>("DataEmprestimo")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdLivro")
+                    b.Property<int>("IdUsuario")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdUsuario")
+                    b.Property<int>("LivroId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -85,17 +85,32 @@ namespace GerenciamentoBiblioteca.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Telefone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 

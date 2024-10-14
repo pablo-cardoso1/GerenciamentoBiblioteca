@@ -5,11 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using GerenciamentoBiblioteca.Context;
 using GerenciamentoBiblioteca.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciamentoBiblioteca.Controllers
 {
 
+    [Authorize]
     public class LivroController : Controller
     {
         private readonly BibliotecaContext _context;
@@ -44,24 +46,30 @@ namespace GerenciamentoBiblioteca.Controllers
         }
 
 
+        
         public IActionResult Adicionar()
         {
             return View();
         }
 
+        
         [HttpPost]
         public IActionResult Adicionar(Livro livro)
         {
             if (ModelState.IsValid)
             {
+                // Adicione o livro ao banco de dados
                 _context.Livros.Add(livro);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
 
+            // Se a validação falhar, retorne à visão com os erros
             return View(livro);
         }
-
+        
+        
+        [HttpGet]
         public IActionResult Editar(int id)
         {
             var livro = _context.Livros.Find(id);
@@ -72,11 +80,23 @@ namespace GerenciamentoBiblioteca.Controllers
             return View(livro);
         }
 
+        
         [HttpPost]
         public IActionResult Editar(Livro livro)
         {
-            var livroBanco = _context.Livros.Find(livro.Id);
+            // Verifica se o modelo é válido
+            if (!ModelState.IsValid)
+            {
+                return View(livro); // Retorna a view com os erros de validação
+            }
 
+            var livroBanco = _context.Livros.Find(livro.Id);
+            if (livroBanco == null)
+            {
+                return NotFound(); // Se não encontrar o livro, retorna NotFound
+            }
+
+            // Atualiza as propriedades do livro
             livroBanco.Titulo = livro.Titulo;
             livroBanco.Autor = livro.Autor;
             livroBanco.AnoPublicacao = livro.AnoPublicacao;
@@ -88,6 +108,7 @@ namespace GerenciamentoBiblioteca.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
         public IActionResult Detalhes(int id)
         {
             var livro = _context.Livros.Find(id);
@@ -97,6 +118,7 @@ namespace GerenciamentoBiblioteca.Controllers
             return View(livro);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Remover(int id)
         {
             var livro = _context.Livros.Find(id);
@@ -107,6 +129,7 @@ namespace GerenciamentoBiblioteca.Controllers
             return View(livro);
         }
 
+        
         [HttpPost]
         public IActionResult Remover(Livro livro)
         {

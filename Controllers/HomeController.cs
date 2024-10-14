@@ -1,9 +1,12 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using GerenciamentoBiblioteca.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GerenciamentoBiblioteca.Controllers;
 
+ // Isso irá restringir o acesso a todos os métodos deste controlador
+ [Authorize(Roles = "Admin")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

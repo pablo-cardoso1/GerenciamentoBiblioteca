@@ -6,9 +6,15 @@
 
 <h2>Livros</h2>
 
+@if (User.IsInRole("Admin"))
+{
 <p>
     <a asp-action="Adicionar" class="btn btn-primary">Novo Livro</a>
 </p>
+}
+else{
+     
+}
 
 <!-- Campos de busca -->
 <form asp-action="Index" method="get">
@@ -47,9 +53,23 @@
                 <td>@Html.DisplayFor(modelItem => item.AnoPublicacao)</td>
                 <td>@Html.DisplayFor(modelItem => item.Quantidade)</td>
                 <td>
-                    <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-primary">Editar</a> 
-                    <a asp-action="Detalhes" asp-route-id="@item.Id" class="btn btn-primary">Detalhes</a> 
-                    <a asp-action="Remover" asp-route-id="@item.Id" class="btn btn-primary">Remover</a>
+                    @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-primary">Editar</a>
+                        }
+                        else
+                        {
+
+                        }    
+                    <a asp-action="Detalhes" asp-route-id="@item.Id" class="btn btn-primary">Detalhes</a>
+                    @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Remover" asp-route-id="@item.Id" class="btn btn-primary">Remover</a>
+                        }
+                        else
+                        {
+                            
+                        }
                 </td>
             </tr>
         }

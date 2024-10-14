@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciamentoBiblioteca.Migrations
 {
     [DbContext(typeof(BibliotecaContext))]
-    [Migration("20241012194249_AttClasses")]
-    partial class AttClasses
+    [Migration("20241014160558_CriacaodasTabelas1")]
+    partial class CriacaodasTabelas1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,31 +25,6 @@ namespace GerenciamentoBiblioteca.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("GerenciamentoBiblioteca.Controllers.Usuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Usuarios");
-                });
-
             modelBuilder.Entity("GerenciamentoBiblioteca.Models.Emprestimo", b =>
                 {
                     b.Property<int>("Id")
@@ -58,16 +33,16 @@ namespace GerenciamentoBiblioteca.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("DataDevolucao")
+                    b.Property<DateTime?>("DataDevolucao")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataEmprestimo")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdLivro")
+                    b.Property<int>("IdUsuario")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdUsuario")
+                    b.Property<int>("LivroId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -100,6 +75,31 @@ namespace GerenciamentoBiblioteca.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Livros");
+                });
+
+            modelBuilder.Entity("GerenciamentoBiblioteca.Models.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
                 });
 #pragma warning restore 612, 618
         }

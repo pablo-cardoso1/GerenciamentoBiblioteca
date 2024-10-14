@@ -9,22 +9,27 @@
 <hr>
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Editar">
-            <div clas="form-group">
+        <form asp-action="Editar" method="post">
+            <input type="hidden" asp-for="Id" /> <!-- Inclui o ID do livro -->
+            <div class="form-group">
                 <label asp-for="Titulo" class="control-label"></label>
                 <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span> <!-- Mensagem de erro -->
             </div>
-            <div clas="form-group">
+            <div class="form-group">
                 <label asp-for="Autor" class="control-label"></label>
                 <input asp-for="Autor" class="form-control" />
+                <span asp-validation-for="Autor" class="text-danger"></span> <!-- Mensagem de erro -->
             </div>
-            <div clas="form-group">
+            <div class="form-group">
                 <label asp-for="AnoPublicacao" class="control-label"></label>
                 <input asp-for="AnoPublicacao" class="form-control" />
+                <span asp-validation-for="AnoPublicacao" class="text-danger"></span> <!-- Mensagem de erro -->
             </div>
-            <div clas="form-group">
+            <div class="form-group">
                 <label asp-for="Quantidade" class="control-label"></label>
                 <input asp-for="Quantidade" class="form-control" />
+                <span asp-validation-for="Quantidade" class="text-danger"></span> <!-- Mensagem de erro -->
             </div>
             <br>
             <div class="form-group">
@@ -37,3 +42,7 @@
 <div>
     <a asp-action="Index" class="btn btn-primary">Voltar</a>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} <!-- Incluindo o script de validação -->
+}
